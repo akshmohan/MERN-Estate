@@ -90,6 +90,3 @@ const SignUP = () => {
 };
 
 export default SignUP;
-
-//HEEEEYYY CAAN YOUUU SEEEE THISSS???
-//BLAAAAAA
