@@ -31,7 +31,12 @@ export const signin = async (req, res, next) => {
 
     const token = jwt.sign({id: validUser._id}, "coding is fun");
 
-    res.cookie('access token', token, {httpOnly: true}).status(200).json({message: "User logged in Successfully"});
+        // eslint-disable-next-line no-unused-vars
+    const {password: pass, ...rest} = validUser._doc
+
+    // res.cookie('access token', token, {httpOnly: true}).status(200).json({message: "User logged in Successfully"});
+    res.cookie('access token', token, {httpOnly: true}).status(200).json({rest});
+
 
   } catch (error) {
     next(error);
