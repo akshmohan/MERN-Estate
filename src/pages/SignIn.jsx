@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../redux/user/userSlice.js";
+import OAuth from "../components/OAuth.jsx";
 
 const SignIn = () => {
+  const dispatch = useDispatch();
+
+  const { loading, error } = useSelector((state) => state.user);
+
   const navigate = useNavigate();
-
-  const [error, setError] = useState(null);
-
-  const [loading, setLoading] = useState(false);
-
   const [formData, setFormData] = useState({});
 
   const handleChange = (e) => {
@@ -18,7 +24,7 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true);
+      dispatch(signInStart());
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: {
@@ -30,19 +36,16 @@ const SignIn = () => {
       const data = await res.json();
       console.log(data);
 
-      if (data.success == false) {
-        setLoading(false);
-        setError(data.message);
+      if (data.success === false) {
+        dispatch(signInFailure(data.message));
         return;
       }
 
-      setLoading(false);
-      setError(null);
+      dispatch(signInSuccess(data));
 
       navigate("/");
     } catch (error) {
-      setLoading(false);
-      setError(error.message);
+      dispatch(signInFailure(error.message));
     }
   };
 
@@ -64,11 +67,11 @@ const SignIn = () => {
           id="password"
           onChange={handleChange}
         />
-        <div className="flex justify-center">
-          <button className="w-40 bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-80">
-            {loading ? "Loading..." : "Sign In"}
-          </button>
-        </div>
+        <button className=" bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-80">
+          {loading ? "Loading..." : "Sign In"}
+        </button>
+
+        <OAuth />
       </form>
 
       <div className="flex gap-2 mt-5">

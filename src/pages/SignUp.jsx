@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 const SignUP = () => {
   const navigate = useNavigate();
@@ -71,11 +72,11 @@ const SignUP = () => {
           id="password"
           onChange={handleChange}
         />
-        <div className="flex justify-center">
-          <button className="w-40 bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-80">
-            {loading ? "Loading..." : "Sign Up"}
-          </button>
-        </div>
+
+        <button className=" bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-80">
+          {loading ? "Loading..." : "Sign Up"}
+        </button>
+        <OAuth />
       </form>
 
       <div className="flex gap-2 mt-5">
