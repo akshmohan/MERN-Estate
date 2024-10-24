@@ -288,7 +288,7 @@ const UpdateListing = () => {
                 required
                 className="p-3 border border-gray-300 rounded-lg"
                 onChange={handleChange}
-                checked={formData.bedrooms}
+                value={formData.bedrooms}
               />
               <p>Beds</p>
             </div>
@@ -302,7 +302,7 @@ const UpdateListing = () => {
                 required
                 className="p-3 border border-gray-300 rounded-lg"
                 onChange={handleChange}
-                checked={formData.bathrooms}
+                value={formData.bathrooms}
               />
               <p>Baths</p>
             </div>
@@ -316,7 +316,7 @@ const UpdateListing = () => {
                 required
                 className="p-3 border border-gray-300 rounded-lg"
                 onChange={handleChange}
-                checked={formData.regularPrice}
+                value={formData.regularPrice}
               />
               <p>Regular Price</p>
             </div>
@@ -324,13 +324,13 @@ const UpdateListing = () => {
               <div className="flex items-center gap-2">
                 <input
                   type="number"
-                  id="regularPrice"
+                  id="discountPrice"
                   min="50"
                   max="10000000"
                   required
                   className="p-3 border border-gray-300 rounded-lg"
                   onChange={handleChange}
-                  checked={formData.discountPrice}
+                  value={formData.discountPrice}
                 />
                 <div className="flex flex-col items-center">
                   <p>Discounted Price</p>
