@@ -54,7 +54,7 @@ const UpdateListing = () => {
       setFormData(data);
     };
     fetchListing();
-  }, []);
+  }, [params.listingId]);
 
   const handleImageSubmit = () => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
