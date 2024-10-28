@@ -207,7 +207,7 @@ const UpdateListing = () => {
             placeholder="Description"
             className="border p-5 rounded-lg"
             id="description"
-            maxLength="62"
+            maxLength="1000"
             minLength="10"
             required
             onChange={handleChange}
