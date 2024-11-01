@@ -6,12 +6,15 @@ import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js';
 import cookieParser from 'cookie-parser';
+import path from 'path';
 
 mongoose.connect("mongodb+srv://akshaymohancareer:wTtZdcZJv88RDfD6@mern-estate.zdhny.mongodb.net/mern-estate?retryWrites=true&w=majority&appName=mern-estate").then(()=>{
     console.log("Connected to MongoDB");
 }).catch((err)=> {
     console.log("Error: " + err);
 });
+
+const __dirname = path.resolve();
 
 const app = express();
 app.use(express.json());
@@ -24,6 +27,12 @@ console.log("Server is running on port 3000!!!")
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter);
+
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/client/dist/index.html'));
+});
 
 
 //MIDDLEWARE
