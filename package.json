@@ -8,8 +8,7 @@
     "dev-backend": "nodemon api/index.js",
     "dev-frontend": "vite",
     "start": "node api/index.js",
-    "build": "vite build",
-    "install": "npm install && npm run install --prefix client && npm run build --prefix client"
+    "build": "npm install && npm run install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
