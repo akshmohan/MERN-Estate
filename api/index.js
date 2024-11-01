@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
@@ -8,7 +9,7 @@ import listingRouter from './routes/listing.route.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 
-mongoose.connect("mongodb+srv://akshaymohancareer:wTtZdcZJv88RDfD6@mern-estate.zdhny.mongodb.net/mern-estate?retryWrites=true&w=majority&appName=mern-estate").then(()=>{
+mongoose.connect(process.env.MONGO).then(()=>{
     console.log("Connected to MongoDB");
 }).catch((err)=> {
     console.log("Error: " + err);
