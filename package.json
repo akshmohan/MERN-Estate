@@ -9,7 +9,7 @@
     "dev-frontend": "vite",
     "build": "npm install --include=dev && npm run build-frontend",
     "build-frontend": "npm install && vite build",
-    "start": "node api/index.js"
+    "start": "npm run build && node api/index.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
