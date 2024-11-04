@@ -7,8 +7,9 @@
     "dev": "concurrently \"npm run dev-backend\" \"npm run dev-frontend\"",
     "dev-backend": "nodemon api/index.js",
     "dev-frontend": "vite",
-    "start": "node api/index.js",
-    "build": "npm install && npm run install && npm run build "
+    "build": "npm install && npm run build-frontend",
+    "build-frontend": "cd client && npm install && npm run build",
+    "start": "npm run build && node api/index.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
