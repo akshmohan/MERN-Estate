@@ -97,6 +97,8 @@ const Home = () => {
         {offerListings && offerListings.length > 0 && (
           <div className="">
             <div className="my-3">
+
+              
               <h2 className="text-2xl font-semibold text-slate-600">
                 Recent Offers
               </h2>
@@ -107,7 +109,7 @@ const Home = () => {
                 Show more offers
               </Link>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col md:flex-row gap-5">
               {offerListings.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
@@ -127,7 +129,7 @@ const Home = () => {
                 Show more places for rent
               </Link>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col md:flex-row gap-5">
               {rentListings.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
